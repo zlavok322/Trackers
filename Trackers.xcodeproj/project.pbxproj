@@ -15,7 +15,7 @@
 		52249E012AD46C8C005B6B87 /* Extension+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52249E002AD46C8C005B6B87 /* Extension+Colors.swift */; };
 		524B7AB92ADC8D4900A3BFF6 /* ScheduleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B7AB82ADC8D4900A3BFF6 /* ScheduleElement.swift */; };
 		52590DFC2AD73A1B00163071 /* NewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590DFB2AD73A1B00163071 /* NewTrackerViewController.swift */; };
-		52590DFE2AD73D7600163071 /* NewTrackerTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590DFD2AD73D7600163071 /* NewTrackerTabelViewCell.swift */; };
+		52590DFE2AD73D7600163071 /* NewTrackerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590DFD2AD73D7600163071 /* NewTrackerViewCell.swift */; };
 		52590E002AD74EC300163071 /* Extension + tf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590DFF2AD74EC300163071 /* Extension + tf.swift */; };
 		52590E022AD751BE00163071 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590E012AD751BE00163071 /* ScheduleViewController.swift */; };
 		52590E042AD753B200163071 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590E032AD753B200163071 /* ScheduleTableViewCell.swift */; };
@@ -39,7 +39,7 @@
 		52249E002AD46C8C005B6B87 /* Extension+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Colors.swift"; sourceTree = "<group>"; };
 		524B7AB82ADC8D4900A3BFF6 /* ScheduleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleElement.swift; sourceTree = "<group>"; };
 		52590DFB2AD73A1B00163071 /* NewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewController.swift; sourceTree = "<group>"; };
-		52590DFD2AD73D7600163071 /* NewTrackerTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerTabelViewCell.swift; sourceTree = "<group>"; };
+		52590DFD2AD73D7600163071 /* NewTrackerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerViewCell.swift; sourceTree = "<group>"; };
 		52590DFF2AD74EC300163071 /* Extension + tf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + tf.swift"; sourceTree = "<group>"; };
 		52590E012AD751BE00163071 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		52590E032AD753B200163071 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,15 +122,15 @@
 				52249DF52AD2F38D005B6B87 /* Models */,
 				52FC95A92AD06C61004B3BDD /* TabBarController.swift */,
 				52FC95B92AD07781004B3BDD /* TrackersViewController.swift */,
+				52249DFC2AD30006005B6B87 /* TrackerCVCell.swift */,
 				52CABB562AD489C10076BBBD /* HeaderSupplementaryView.swift */,
 				52CABB542AD483030076BBBD /* GeometricParams.swift */,
 				52249DFE2AD46ABB005B6B87 /* CreateTrackersViewController.swift */,
-				52590DFD2AD73D7600163071 /* NewTrackerTabelViewCell.swift */,
+				52590DFD2AD73D7600163071 /* NewTrackerViewCell.swift */,
 				52590DFB2AD73A1B00163071 /* NewTrackerViewController.swift */,
 				52590E032AD753B200163071 /* ScheduleTableViewCell.swift */,
 				52590E012AD751BE00163071 /* ScheduleViewController.swift */,
 				524B7AB82ADC8D4900A3BFF6 /* ScheduleElement.swift */,
-				52249DFC2AD30006005B6B87 /* TrackerCVCell.swift */,
 				52FC95BB2AD077A3004B3BDD /* StatisticViewController.swift */,
 			);
 			path = Trackers;
@@ -212,7 +212,7 @@
 				52249DFD2AD30006005B6B87 /* TrackerCVCell.swift in Sources */,
 				52590DFC2AD73A1B00163071 /* NewTrackerViewController.swift in Sources */,
 				52249E012AD46C8C005B6B87 /* Extension+Colors.swift in Sources */,
-				52590DFE2AD73D7600163071 /* NewTrackerTabelViewCell.swift in Sources */,
+				52590DFE2AD73D7600163071 /* NewTrackerViewCell.swift in Sources */,
 				52CABB552AD483030076BBBD /* GeometricParams.swift in Sources */,
 				52590E042AD753B200163071 /* ScheduleTableViewCell.swift in Sources */,
 				52FC95AA2AD06C61004B3BDD /* TabBarController.swift in Sources */,

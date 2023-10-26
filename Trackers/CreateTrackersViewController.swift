@@ -3,6 +3,7 @@ import UIKit
 final class CreateTrackersViewController: UIViewController {
     
     private var viewController: TrackersViewController
+    var trackerType: TrackerType?
     
     init(viewController: TrackersViewController){
         self.viewController = viewController
@@ -44,8 +45,13 @@ final class CreateTrackersViewController: UIViewController {
         return button
     }()
     
-    @objc func createTrackerButtonTapped() {
-        let vc = NewTrackerViewController(viewController: self.viewController)
+    @objc private func createTrackerButtonTapped() {
+        let vc = NewTrackerViewController(viewController: self.viewController, trackerType: .tracker)
+        present(vc, animated: true)
+    }
+    
+    @objc private func createEventButtonTapped() {
+        let vc = NewTrackerViewController(viewController: self.viewController, trackerType: .event)
         present(vc, animated: true)
     }
     
@@ -84,6 +90,7 @@ final class CreateTrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         trackerButton.addTarget(self, action: #selector(createTrackerButtonTapped), for: .touchUpInside)
+        eventButton.addTarget(self, action: #selector(createEventButtonTapped), for: .touchUpInside)
         setUI()
     }
 }

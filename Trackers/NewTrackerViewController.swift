@@ -7,9 +7,11 @@ final class NewTrackerViewController: UIViewController {
     private var selectedDays: [Week]?
     
     var viewController: TrackersViewController
+    var trackerType: TrackerType
     
-    init(viewController: TrackersViewController) {
+    init(viewController: TrackersViewController, trackerType: TrackerType) {
         self.viewController = viewController
+        self.trackerType = trackerType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,8 +66,8 @@ final class NewTrackerViewController: UIViewController {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 16
         tableView.register(
-            NewTrackerTabelViewCell.self,
-            forCellReuseIdentifier: NewTrackerTabelViewCell.identifier
+            NewTrackerViewCell.self,
+            forCellReuseIdentifier: NewTrackerViewCell.identifier
         )
         tableView.separatorStyle = .singleLine
         
@@ -130,30 +132,54 @@ final class NewTrackerViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func addTracker() {
+        let newCategory = TrackerCategory(
+            head: "categorya",
+            trackers: [Tracker(
+                id: 0,
+                name: textField.text ?? "",
+                color: .green,
+                emoji: "😍",
+                schedule: selectedDays ?? [])]
+        )
+        
+        var categories = viewController.categories
+        categories.append(newCategory)
+        viewController.categories = categories
+    }
+    
+    private func addEvent() {
+        let newCategory = TrackerCategory(
+            head: "Общая",
+            trackers: [Tracker(
+                id: UInt.random(in: 1...1000),
+                name: textField.text ?? "",
+                color: .green,
+                emoji: "😍",
+                schedule: Week.allCases)]
+        )
+        
+        var categories = viewController.categories
+        categories.append(newCategory)
+        viewController.categories = categories
+    }
+    
     @objc private func createButtonTapped() {
-        if textField.text != "" {
-            let newCategory = TrackerCategory(
-                head: "categorya",
-                trackers: [Tracker(
-                    id: 0,
-                    name: textField.text ?? "",
-                    color: .green,
-                    emoji: "",
-                    schedule: selectedDays ?? [])]
-            )
-            
-            var categories = viewController.categories
-            categories.append(newCategory)
-            viewController.categories = categories
-            
-            NotificationCenter.default
-                .post(
-                    name: TrackersViewController.didChangeCollectionNotification,
-                    object: self,
-                    userInfo: nil)
-            
-            dismiss(animated: true)
+        guard let tf = textField.text, !tf.isEmpty, tf != "" else { return }
+        
+        if trackerType == .tracker {
+            addTracker()
+        } else {
+            addEvent()
         }
+        
+        NotificationCenter.default
+            .post(
+                name: TrackersViewController.didChangeCollectionNotification,
+                object: self,
+                userInfo: nil)
+        
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {
@@ -172,11 +198,11 @@ extension NewTrackerViewController: ScheduleVCDelegate {
 //MARK: UITableViewDataSource
 extension NewTrackerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return trackerType == .tracker ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTrackerTabelViewCell.identifier, for: indexPath) as? NewTrackerTabelViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTrackerViewCell.identifier, for: indexPath) as? NewTrackerViewCell else { return UITableViewCell() }
         
         cell.nameLabel.text = tableCellNames[indexPath.row]
         cell.accessoryType = .disclosureIndicator

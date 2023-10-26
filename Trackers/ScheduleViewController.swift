@@ -24,8 +24,8 @@ final class ScheduleViewController: UIViewController, ScheduleCellDelegate {
         tableView.layer.masksToBounds = true
         tableView.layer.cornerRadius = 10
         tableView.register(
-            ScheduleTableViewCell.self,
-            forCellReuseIdentifier: ScheduleTableViewCell.identifier
+            ScheduleViewCell.self,
+            forCellReuseIdentifier: ScheduleViewCell.identifier
         )
         tableView.separatorStyle = .singleLine
         
@@ -126,8 +126,8 @@ extension ScheduleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath)
-        guard let selectedDaysCell = cell as? ScheduleTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleViewCell.identifier, for: indexPath)
+        guard let selectedDaysCell = cell as? ScheduleViewCell else { return UITableViewCell() }
         
         let selectedDays = scheduleList[indexPath.row]
         selectedDaysCell.delegate = self

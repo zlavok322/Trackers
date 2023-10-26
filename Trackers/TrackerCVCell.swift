@@ -13,21 +13,36 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
             countLabel.text = "\(count) дней"
         }
     }
+    
+    var emoji = "" {
+        didSet {
+            emojiLabel.text = emoji
+        }
+    }
+    
     var delegate: TrackerCellDelegate?
     
-    private let emojiImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
+    private let emojiView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .colorStyles(.whiteYP)?.withAlphaComponent(0.7)
+        view.layer.cornerRadius = 18
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let emojiLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private let nameView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 16
         view.backgroundColor = .green
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,6 +64,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     private let trackerLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .colorStyles(.whiteYP)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -56,6 +72,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     
     private let countLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -71,9 +88,10 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    func configCell(tracker: Tracker, count: Int, isCompleted: Bool) {
+    func configCell(tracker: Tracker, count: Int, emoji: String, isCompleted: Bool) {
         self.tracker = tracker
         self.count = count
+        self.emoji = emoji
         doneButton.backgroundColor = tracker.color
         trackerLabel.text = tracker.name
         isCompleted == true ? buttonCompleted() : buttonNotCompleted()
@@ -100,7 +118,8 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     }
     
     private func addSubViews() {
-        nameView.addSubview(emojiImageView)
+        emojiView.addSubview(emojiLabel)
+        nameView.addSubview(emojiView)
         nameView.addSubview(trackerLabel)
         countView.addSubview(countLabel)
         countView.addSubview(doneButton)
@@ -126,10 +145,13 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
             countView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
             countView.topAnchor.constraint(equalTo: nameView.bottomAnchor),
             
-            emojiImageView.topAnchor.constraint(equalTo: nameView.topAnchor, constant: 12),
-            emojiImageView.leadingAnchor.constraint(equalTo: nameView.leadingAnchor, constant: 12),
-            emojiImageView.heightAnchor.constraint(equalToConstant: 24),
-            emojiImageView.widthAnchor.constraint(equalToConstant: 24),
+            emojiView.topAnchor.constraint(equalTo: nameView.topAnchor, constant: 12),
+            emojiView.leadingAnchor.constraint(equalTo: nameView.leadingAnchor, constant: 12),
+            emojiView.heightAnchor.constraint(equalToConstant: 36),
+            emojiView.widthAnchor.constraint(equalToConstant: 36),
+            
+            emojiLabel.centerXAnchor.constraint(equalTo: emojiView.centerXAnchor),
+            emojiLabel.centerYAnchor.constraint(equalTo: emojiView.centerYAnchor),
             
             doneButton.trailingAnchor.constraint(equalTo: countView.trailingAnchor, constant: -12),
             doneButton.topAnchor.constraint(equalTo: countView.topAnchor, constant: 8),

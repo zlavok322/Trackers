@@ -4,8 +4,8 @@ protocol ScheduleCellDelegate {
     func didWeekDayIsOnChanged(scheduleElement: ScheduleElement)
 }
 
-final class ScheduleTableViewCell: UITableViewCell {
-    static let identifier = "ScheduleTableViewCell"
+final class ScheduleViewCell: UITableViewCell {
+    static let identifier = "ScheduleViewCell"
     
     var delegate: ScheduleCellDelegate? = nil
     

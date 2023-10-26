@@ -231,7 +231,7 @@ extension TrackersViewController: UICollectionViewDataSource {
             $0.id == currentTracker.id && $0.date == currentDate
         })
         
-        cell.configCell(tracker: currentTracker, count: countCompleted, isCompleted: isCompleted)
+        cell.configCell(tracker: currentTracker, count: countCompleted, emoji: "❤", isCompleted: isCompleted)
         cell.delegate = self
         
         return cell

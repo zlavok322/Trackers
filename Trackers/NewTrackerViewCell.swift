@@ -1,7 +1,7 @@
 import UIKit
 
-final class NewTrackerTabelViewCell: UITableViewCell {
-    static let identifier = "NewTrackerTabelViewCell"
+final class NewTrackerViewCell: UITableViewCell {
+    static let identifier = "NewTrackerViewCell"
     
     let nameLabel: UILabel = {
         let label = UILabel()
